@@ -41,7 +41,7 @@ export class SemaphoreService implements ISemaphoreService {
     }
 
     const groupCounter = await this.getGroupCounter();
-    const groupId = groupCounter - BigInt(1);
+    const groupId = groupCounter;
 
     return {
       groupId,
