@@ -45,9 +45,9 @@ export class SemaphoreService implements ISemaphoreService {
       throw new HTTPException(500, { message: "Failed to create group" });
     }
 
-    // El groupId se puede obtener del evento GroupCreated o del groupCounter - 1
+    // El groupId se puede obtener del evento GroupCreated o del groupCounter
     const groupCounter = await this.getGroupCounter();
-    const groupId = groupCounter - BigInt(1);
+    const groupId = groupCounter;
 
     return {
       groupId,
