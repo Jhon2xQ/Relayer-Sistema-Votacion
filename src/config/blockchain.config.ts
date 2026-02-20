@@ -1,12 +1,16 @@
 import { createPublicClient, createWalletClient, http } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
-import { mainnet, sepolia, hardhat } from "viem/chains";
+import { mainnet, optimism, optimismSepolia } from "viem/chains";
 import { env } from "./env";
 
 const getChain = () => {
-  if (env.RPC_URL.includes("sepolia")) return sepolia;
-  if (env.RPC_URL.includes("localhost") || env.RPC_URL.includes("127.0.0.1")) return hardhat;
-  return mainnet;
+  // Development/Testnet: Optimism Sepolia
+  if (env.NODE_ENV === "development") {
+    return optimismSepolia;
+  }
+
+  // Production: Optimism Mainnet
+  return optimism;
 };
 
 export const chain = getChain();
