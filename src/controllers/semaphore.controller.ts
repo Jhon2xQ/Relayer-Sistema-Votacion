@@ -46,6 +46,7 @@ export class SemaphoreController {
             status: result.result.status,
           },
         },
+        timestamp: Date.now(),
       },
       201,
     );
@@ -63,6 +64,7 @@ export class SemaphoreController {
         groupId: groupId.toString(),
         transaction: result,
       },
+      timestamp: Date.now(),
     });
   };
 
@@ -85,6 +87,7 @@ export class SemaphoreController {
         newAdmin,
         transaction: result,
       },
+      timestamp: Date.now(),
     });
   };
 
@@ -95,6 +98,7 @@ export class SemaphoreController {
 
     return c.json({
       success: true,
+      message: "Group info retrieved successfully",
       data: {
         id: info.id.toString(),
         admin: info.admin,
@@ -103,6 +107,7 @@ export class SemaphoreController {
         merkleTreeRoot: info.merkleTreeRoot.toString(),
         merkleTreeSize: info.merkleTreeSize.toString(),
       },
+      timestamp: Date.now(),
     });
   };
 
@@ -125,6 +130,7 @@ export class SemaphoreController {
             gasUsed: result.gasUsed.toString(),
           },
         },
+        timestamp: Date.now(),
       },
       201,
     );
@@ -150,6 +156,7 @@ export class SemaphoreController {
             gasUsed: result.gasUsed.toString(),
           },
         },
+        timestamp: Date.now(),
       },
       201,
     );
@@ -169,6 +176,7 @@ export class SemaphoreController {
         identityCommitment: dto.identityCommitment.toString(),
         transaction: result,
       },
+      timestamp: Date.now(),
     });
   };
 
@@ -187,6 +195,7 @@ export class SemaphoreController {
         newIdentityCommitment: dto.newIdentityCommitment.toString(),
         transaction: result,
       },
+      timestamp: Date.now(),
     });
   };
 
@@ -201,11 +210,13 @@ export class SemaphoreController {
 
     return c.json({
       success: true,
+      message: "Member check completed",
       data: {
         groupId: dto.groupId.toString(),
         identityCommitment: dto.identityCommitment.toString(),
         hasMember,
       },
+      timestamp: Date.now(),
     });
   };
 
@@ -230,6 +241,7 @@ export class SemaphoreController {
           status: result.status,
         },
       },
+      timestamp: Date.now(),
     });
   };
 
@@ -241,6 +253,7 @@ export class SemaphoreController {
 
     return c.json({
       success: true,
+      message: "Proof verification completed",
       data: {
         groupId: dto.groupId.toString(),
         isValid,
@@ -250,6 +263,7 @@ export class SemaphoreController {
           scope: dto.proof.scope.toString(),
         },
       },
+      timestamp: Date.now(),
     });
   };
 
@@ -258,10 +272,12 @@ export class SemaphoreController {
 
     return c.json({
       success: true,
+      message: "Group counter retrieved successfully",
       data: {
         totalGroups: counter.toString(),
         nextGroupId: counter.toString(),
       },
+      timestamp: Date.now(),
     });
   };
 
@@ -270,9 +286,11 @@ export class SemaphoreController {
 
     return c.json({
       success: true,
+      message: "Verifier address retrieved successfully",
       data: {
         verifierAddress: verifier,
       },
+      timestamp: Date.now(),
     });
   };
 }
